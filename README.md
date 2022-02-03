@@ -6,7 +6,7 @@ SpaceGame is a sideProject done while still learnning Python, the purpse of this
 # Screenshots
 |  |  |
 | ------------ | ------- |
-|  <img src="ScreenShot1.png" />      |  <img src="ScreenShot2.png" /> |
+|  <img src="screenShot2.png" />      |  <img src="screenShot1.png" /> |
 # Features
 - breaking down the project into smaller manageable pieces, and then breaking them into even smaller pieces so that I could have functions that each only did one thing
 - A class is an abstract blueprint used to create more specific
