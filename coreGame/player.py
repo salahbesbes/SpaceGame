@@ -1,9 +1,11 @@
 import pygame
-from coreGame.objectBase import SpaceObject
 from coreGame.directionBase import Direction as Dr
 from coreGame.gameStatus import Status, ObS
 from coreGame.bullet import Bullet
 from coreGame.GameInstance import Gi
+
+
+from coreGame.objectBase import SpaceObject
 
 
 class Player(SpaceObject):

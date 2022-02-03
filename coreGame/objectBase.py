@@ -23,6 +23,20 @@ class SpaceObject:
         self.class_name = ""
         self.status = ObS.ALIVE
 
+    @classmethod
+    def update(cls):
+        pass
+
+    def kill_self(self):
+        # search for the obj in game_env and remove it
+        try:
+            self.game_env.list_object.remove(self)
+            # delete instance bullet
+        except Exception:
+            print(f"[ERROR, {self.__class__.__name__}]: "
+                  f"instance \"{self.class_name}\" not found ")
+        del self
+
     @staticmethod
     def check_coordinate(value, edge):
         if type(value) is not int and type(value) is not float:
@@ -118,24 +132,11 @@ class SpaceObject:
             raise TypeError("pls give me the path of the img")
         # scale the image to 64*64
         picture = pygame.image.load(value)
-        picture = pygame.transform.scale(picture, (self.image_size, self.image_size))
+        picture = pygame.transform.scale(
+            picture, (self.image_size, self.image_size))
         if self.direction == Dr.DOWN:
             picture = pygame.transform.rotate(picture, 180)
         self.__img = picture
-
-    @classmethod
-    def update(cls):
-        pass
-
-    def kill_self(self):
-        # search for the obj in game_env and remove it
-        try:
-            self.game_env.list_object.remove(self)
-            # delete instance bullet
-        except Exception:
-            print(f"[ERROR, {self.__class__.__name__}]: "
-                  f"instance \"{self.class_name}\" not found ")
-        del self
 
     def check_if_tow_objs_hits(self, second_obj):
         """
@@ -143,7 +144,8 @@ class SpaceObject:
         :param second_obj: any obj from the list_obj
         :return: True or False
         """
-        self_shape = {"x": self.x, "y": self.y, "width": self.width, "height": self.height}
+        self_shape = {"x": self.x, "y": self.y,
+                      "width": self.width, "height": self.height}
         obj_shape = {"x": second_obj.x, "y": second_obj.y,
                      "width": second_obj.width, "height": second_obj.height}
 

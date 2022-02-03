@@ -1,10 +1,14 @@
 import pygame
 import threading
-from coreGame.objectBase import SpaceObject
 from coreGame.directionBase import Direction as Dr
 from coreGame.gameStatus import Status, ObS
 from coreGame.GameInstance import Gi
 from coreGame.alien import Alien
+
+
+from coreGame.objectBase import SpaceObject
+
+
 class Bullet(SpaceObject):
     def __init__(self, game, img, size, obj_fired, direction=Dr.UP):
         """
@@ -56,6 +60,9 @@ class Bullet(SpaceObject):
         if value < 0 or value > edge:
             pass
 
+    def update(self):
+        self.move()
+
     def move(self):
         class_name = self.get_class_name(self.obj_fired)
         if class_name == Gi.PLAYER:
@@ -73,9 +80,6 @@ class Bullet(SpaceObject):
         # if the bullet reaches the top bord it kills it self
         if self.y < 0 or self.y > self.limit_y:
             self.kill_self()
-
-    def update(self):
-        self.move()
 
     def on_collision(self, obj_hit):
         if obj_hit.class_name == Gi.ALIEN and self.shooter == Gi.PLAYER:

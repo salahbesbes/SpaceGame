@@ -19,6 +19,12 @@ class GameBase:
         self.text_score = None
         self.player_score = 0
 
+    def handle_game_logic(self):
+        for obj in self.list_object:
+            # it update each obj
+            obj.update()
+            obj.check_collision()
+
     @property
     def sc_height(self):
         return self.__sc_height
@@ -34,12 +40,6 @@ class GameBase:
     @sc_width.setter
     def sc_width(self, value):
         self.__sc_width = value
-
-    def handle_game_logic(self):
-        for obj in self.list_object:
-            # it update each obj
-            obj.update()
-            obj.check_collision()
 
     def render_all(self):
         self.text_score.render(f"score: {self.player_score}")
@@ -93,14 +93,14 @@ class GameBase:
         # create screen
         self.screen = pygame.display.set_mode((self.sc_width, self.sc_height))
         background = pygame.image.load('backGround.png')
-        self.background = pygame.transform.scale(background, (self.sc_width, self.sc_height))
+        self.background = pygame.transform.scale(
+            background, (self.sc_width, self.sc_height))
         # each instance of the hole game must be appended in the list
-        self.current_player = Player(self, "UFO.png", 64)  # append and save the instance to the game env
+        # append and save the instance to the game env
+        self.current_player = Player(self, "UFO.png", 64)
         Alien(self, "alien.png", 64)  # append self in list_object
         # create an instance that display score
         self.text_score = DisplayOnScreen(self)
         # add sound in background (infinite loop)
         mixer.music.load("background.wav")
         mixer.music.play(-1)
-
-
