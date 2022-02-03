@@ -6,7 +6,7 @@ SpaceGame is a sideProject done while still learnning Python, the purpse of this
 # Screenshots
 |  |  |
 | ------------ | ------- |
-|  <img src="ScreenShot1.PNG" />      |  <img src="ScreenShot2.PNG" /> |
+|  <img src="ScreenShot1.png" />      |  <img src="ScreenShot2.png" /> |
 # Features
 - breaking down the project into smaller manageable pieces, and then breaking them into even smaller pieces so that I could have functions that each only did one thing
 - A class is an abstract blueprint used to create more specific
@@ -29,7 +29,7 @@ Check those options:
 	Add python to envirement variables options
 
 <p align="center">
-  <img src="options.png"
+  <img src="options.PNG"
        alt="installation Options"
        width="750"
   >
